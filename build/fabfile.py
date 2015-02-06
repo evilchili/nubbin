@@ -12,6 +12,7 @@ def init():
     """
     Initialize the app deployment
     """
+    cotton.create_project()
     cotton.install_iojs()
 
 
