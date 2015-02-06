@@ -8,9 +8,18 @@ cotton.set_fabric_env('cotton_settings')
 
 
 @task
+def init():
+    """
+    Initialize the app deployment
+    """
+    cotton.install_iojs()
+
+
+@task
 def ship():
     """
     Deploy the current branch to production
     """
     cotton.git_push()
+    cotton.install_iojs_dependencies()
     cotton.upload_template_and_reload('nginx')

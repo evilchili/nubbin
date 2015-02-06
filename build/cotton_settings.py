@@ -83,3 +83,8 @@ TEMPLATES += [
                           "/etc/init.d/nginx reload"
     }
 ]
+
+
+IOJS_PORT = 3000
+
+NPM_REQUIREMENTS_PATH = [COTTON_PATH + '/../requirements/npm.txt']
