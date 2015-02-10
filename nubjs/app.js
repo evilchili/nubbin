@@ -1,11 +1,15 @@
 var express = require('express');
+var flick = require('flick');
+var shell = require('shelljs');
 var app = express();
+var handler = flick();
 
-app.get('/', function(req, res) {
+handler.use(function(req, res, next) {
+    console.log('Got a WebHook!');
     res.send('NUBBIN');
+    next();
 });
-
-
-var server = app.listen(3000, function() {
-    console.log('Express is listening to http://localhost:3000'); 
-});
+ 
+app.use('/', flick.secret(process.env.GITHUB_SECRET));
+app.use('/', handler);
+app.listen(3000);
